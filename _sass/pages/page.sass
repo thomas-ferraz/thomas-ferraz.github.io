@@ -135,30 +135,72 @@
         color: #000
         text-decoration: none
 
-.news-list article
-    background: #111
-    border-radius: 12px
-    padding: 1.5rem
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15)
-    height: 100%
+// Simple news list format (like Maxime's site)
+.news-simple-list
+    list-style: none
+    padding: 0
+    margin: 1.5rem 0 0 0
+
+.news-simple-item
     display: flex
-    flex-direction: column
+    flex-direction: row
     gap: 1rem
+    margin-bottom: 1.5rem
+    align-items: flex-start
 
-.news-list
-    grid-template-columns: 1fr
+    @media (max-width: 768px)
+        flex-direction: column
+        gap: 0.5rem
 
-@media (min-width: 768px)
-    .news-list
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
-
-.news-date time
+.news-simple-date
+    flex-shrink: 0
+    width: 140px
     font-weight: 600
     color: #9ad0ff
+    font-size: 1.4rem
+
+    @media (max-width: 768px)
+        width: 100%
+
+.news-simple-content
+    flex: 1
+    min-width: 0
+
+.news-simple-text
+    color: $alpha
+    font-size: 1.4rem
+    line-height: 1.7
+
+    strong
+        color: $beta
+        font-weight: 600
+
+    p
+        margin: 0
+        display: inline
 
 .news-section a
-    color: #4cb5ff
-    font-weight: 600
+    color: #9ad0ff
+    text-decoration: none
 
 .news-section a:hover, .news-section a:focus
     text-decoration: underline
+
+// News page specific styles
+.news-page-section
+    margin: 3rem auto
+    max-width: 900px
+    padding: 0 1rem
+
+    h1
+        margin-bottom: 2rem
+
+    .news-simple-list
+        margin-top: 2rem
+
+    a
+        color: #9ad0ff
+        text-decoration: none
+
+        &:hover, &:focus
+            text-decoration: underline

@@ -1,0 +1,24 @@
+---
+title: News
+layout: page
+---
+{% assign all_news = site.news | sort: 'date' | reverse %}
+
+<section class="news-page-section">
+    <h1>News</h1>
+    {% if all_news.size > 0 %}
+    <ul class="news-simple-list">
+        {% for item in all_news %}
+        <li class="news-simple-item">
+            <time class="news-simple-date" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%b %d, %Y" }}</time>
+            <div class="news-simple-content">
+                <span class="news-simple-text"><strong>{{ item.title }}:</strong> {{ item.content | markdownify }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No news items available.</p>
+    {% endif %}
+</section>
+
