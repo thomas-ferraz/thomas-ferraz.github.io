@@ -1,10 +1,13 @@
 bio:
   short: >-
-    Hi, I'm Thomas Ferraz, a PhD Track Student at École Polytechnique / Télécom Paris (Institut Polytechnique de Paris)
-    specializing in Natural Language Processing. My work centers on large language models, multilingual NLP, and
-    low-resource languages. I hold a Master’s degree in Applied Math & AI (Master MVA) from ENS Paris-Saclay and an
-    engineering degree from the Universidade de São Paulo, where I graduated top of my class. My research aims to build
-    robust, efficient, and inclusive NLP systems, and I have gained industry experience at Meta, Amazon, Apple, and NAVER Labs.
+    Hi, I'm **Thomas Ferraz**, a PhD Track Student at École Polytechnique / Télécom Paris (Institut Polytechnique de Paris), specializing
+        in **Natural Language Processing (NLP)** with a focus on **large language models**,
+        **multilingual NLP**, and **low-resource languages**. I hold a Master's degree in Applied Math & AI (Master MVA)
+        from **ENS Paris-Saclay** and an engineering degree from the **Universidade de São Paulo**, where I graduated
+        top of my class. My research aims to advance methods for building robust, efficient, and inclusive NLP systems, particularly for
+        underrepresented languages. I have gained valuable industry experience through research internships at **Meta**,
+        **Amazon**, **Apple**, and **NAVER Labs**, where I contributed to projects on
+        **Efficient ML**, **multilingual NLP**, **Multilingual ASR**, and **LLMs Instruction-following**.
 selected_publications_intro: >-
   A selection of papers that reflect my main research focus and contributions.
 selected_publications:
