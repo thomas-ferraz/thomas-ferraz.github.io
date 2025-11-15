@@ -31,26 +31,46 @@ layout: page
     <p>{{ profile.selected_publications_intro }}</p>
     <ul class="publications-list">
         {% for pub in publications %}
-        <li class="publication-card">
-            <article>
+        <li class="publication-item">
+            <article class="publication-row">
                 {% if pub.image %}
-                <figure class="publication-media">
-                    <a href="{{ pub.url }}" target="_blank" rel="noopener" aria-label="Read {{ pub.title }}">
+                <div class="publication-thumbnail">
+                    <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener" aria-label="Read {{ pub.title }}">
                         <img src="{{ pub.image | relative_url }}" alt="Illustration for {{ pub.title }}">
                     </a>
-                </figure>
+                </div>
                 {% endif %}
                 <div class="publication-content">
-                    <h3>
-                        <a href="{{ pub.url }}" target="_blank" rel="noopener">
+                    <h3 class="publication-title">
+                        <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener">
                             {{ pub.title }}
                         </a>
                     </h3>
-                    <p class="publication-meta">
-                        <span class="authors">{{ pub.authors }}</span><br>
-                        <span class="venue">{{ pub.venue }}</span>
-                    </p>
-                    <p>{{ pub.summary }}</p>
+                    <p class="publication-authors">{{ pub.authors }}</p>
+                    <p class="publication-venue">{{ pub.venue }}</p>
+                    {% if pub.summary %}
+                    <p class="publication-summary"><strong>TL;DR:</strong> {{ pub.summary }}</p>
+                    {% endif %}
+                    <div class="publication-buttons">
+                        {% if pub.arxiv %}
+                        <a href="{{ pub.arxiv }}" target="_blank" rel="noopener" class="pub-button">ARXIV</a>
+                        {% endif %}
+                        {% if pub.bib %}
+                        <a href="{{ pub.bib }}" target="_blank" rel="noopener" class="pub-button">BIB</a>
+                        {% endif %}
+                        {% if pub.pdf %}
+                        <a href="{{ pub.pdf }}" target="_blank" rel="noopener" class="pub-button">PDF</a>
+                        {% endif %}
+                        {% if pub.code %}
+                        <a href="{{ pub.code }}" target="_blank" rel="noopener" class="pub-button">CODE</a>
+                        {% endif %}
+                        {% if pub.site %}
+                        <a href="{{ pub.site }}" target="_blank" rel="noopener" class="pub-button">SITE</a>
+                        {% endif %}
+                        {% if pub.twitter %}
+                        <a href="{{ pub.twitter }}" target="_blank" rel="noopener" class="pub-button">TWITTER</a>
+                        {% endif %}
+                    </div>
                 </div>
             </article>
         </li>

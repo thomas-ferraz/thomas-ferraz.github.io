@@ -9,26 +9,32 @@ selected_publications_intro: >-
   A selection of papers that reflect my main research focus and contributions.
 selected_publications:
   - title: "LLM Self-Correction with DeCRIM: Decompose, Critique, and Refine for Enhanced Following of Instructions with Multiple Constraints"
-    url: https://arxiv.org/pdf/2410.06458
     image: assets/images/selected_publications/DeCRIM.png
     authors: Thomas Palmeira Ferraz, Kartik Mehta, Yu-Hsiang Lin, Haw-Shiuan Chang, Shereen Oraby, Sijia Liu, Vivek Subramanian, Tagyoung Chung, Mohit Bansal, Nanyun Peng
     venue: "EMNLP, 2024 & Sys2Reasoning @ NeurIPS, 2024"
+    arxiv: https://arxiv.org/abs/2410.06458
+    pdf: https://arxiv.org/pdf/2410.06458
+    bib: https://arxiv.org/bibtex/2410.06458
     summary: >-
       Introducing RealInstruct to evaluate LLMs on real multi-constrained instructions, and DeCRIM self-correction that improves
       instruction following by decomposing requests and refining responses, enabling open LLMs to outperform GPT-4 with strong feedback.
   - title: "Multilingual DistilWhisper: Efficient Distillation of Multi-task Speech Models via Language-Specific Experts"
-    url: https://arxiv.org/pdf/2311.01070
     image: assets/images/selected_publications/DistilWhisper.png
     authors: Thomas Palmeira Ferraz, Marcely Zanon Boito, Caroline Brun, Vassilina Nikoulina
     venue: ICASSP, 2024
+    arxiv: https://arxiv.org/abs/2311.01070
+    pdf: https://arxiv.org/pdf/2311.01070
+    bib: https://arxiv.org/bibtex/2311.01070
     summary: >-
       Proposes a lightweight adaptation method bridging the gap between small and large speech models on under-represented languages
       by leveraging language-specific experts and knowledge distillation, outperforming fine-tuning and LoRA with minimal overhead.
   - title: "ZeroBERTo: Leveraging Zero-Shot Text Classification by Topic Modeling"
-    url: https://arxiv.org/pdf/2201.01337
     image: assets/images/selected_publications/ZeroBERTo.png
     authors: Alexandre Alcoforado, Thomas Palmeira Ferraz, Rodrigo Gerber, Enzo Bustos, André Seidel Oliveira, Bruno Miguel Veloso, Fabio Levy Siqueira, Anna Helena Reali Costa
     venue: PROPOR, 2022
+    arxiv: https://arxiv.org/abs/2201.01337
+    pdf: https://arxiv.org/pdf/2201.01337
+    bib: https://arxiv.org/bibtex/2201.01337
     summary: >-
       ZeroBERTo combines topic modeling with language models for zero-shot text classification, overcoming input size limitations and reducing runtime,
       achieving a 12% better F1 score and 13x faster inference compared to XLM-R on a Portuguese benchmark.
