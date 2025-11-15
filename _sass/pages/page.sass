@@ -10,3 +10,81 @@
         width: 50%
         margin: 0 auto
         display: block
+
+.bio-section, .research-section, .publications-section, .news-section
+    margin: 3rem auto
+    max-width: 900px
+    padding: 0 1rem
+
+.bio-section p, .research-section p
+    font-size: 1.05rem
+    line-height: 1.7
+
+.publications-list, .news-list
+    list-style: none
+    padding: 0
+    margin: 0
+    display: grid
+    gap: 1.5rem
+
+.publications-list
+    grid-template-columns: 1fr
+
+@media (min-width: 768px)
+    .publications-list
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+
+.publication-card article, .news-list article
+    background: #111
+    border-radius: 12px
+    padding: 1.5rem
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15)
+    height: 100%
+    display: flex
+    flex-direction: column
+    gap: 1rem
+
+.publication-card figure
+    margin: 0
+
+.publication-media img
+    width: 100%
+    height: auto
+    border-radius: 10px
+    object-fit: cover
+
+.publication-content h3
+    margin-top: 0
+    font-size: 1.2rem
+
+.publication-content a
+    color: #4cb5ff
+    text-decoration: none
+
+.publication-content a:hover, .publication-content a:focus
+    text-decoration: underline
+
+.publication-meta
+    color: #c9c9c9
+    font-size: 0.95rem
+
+.publication-meta .venue
+    color: #9ad0ff
+
+.news-list
+    grid-template-columns: 1fr
+
+@media (min-width: 768px)
+    .news-list
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+
+.news-date time
+    font-weight: 600
+    color: #9ad0ff
+
+.news-section a
+    color: #4cb5ff
+    font-weight: 600
+
+.news-section a:hover, .news-section a:focus
+    text-decoration: underline
