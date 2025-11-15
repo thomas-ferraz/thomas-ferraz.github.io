@@ -54,6 +54,11 @@
      # Using Homebrew
      brew install ruby
      ```
+     # Add Homebrew Ruby to your PATH (add to ~/.zshrc)
+   ```sh
+    echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
+    ```
 
 3. **Install Bundler**:
    ```sh
