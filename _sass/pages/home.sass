@@ -1,0 +1,121 @@
+// Homepage sidebar layout styles
+
+.home
+    margin-top: 0
+
+// Override wrapper width for homepage to use more space
+.wrapper-large .home
+    max-width: 100%
+
+.homepage-container
+    display: flex
+    flex-direction: row
+    gap: 3rem
+    margin: 2rem auto
+    max-width: 1600px
+    padding: 0 3rem
+    align-items: flex-start
+
+    @media (max-width: 768px)
+        flex-direction: column
+        gap: 2rem
+        padding: 0 1rem
+        margin: 1rem auto
+
+.homepage-sidebar
+    flex-shrink: 0
+    width: 250px
+    text-align: center
+    position: sticky
+    top: 2rem
+    align-self: flex-start
+
+    @media (max-width: 768px)
+        width: 100%
+        position: static
+        text-align: center
+        margin: 0 auto
+
+.sidebar-profile-pic
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    margin: 0 auto 1.5rem
+    display: block
+    object-fit: cover
+    border: 3px solid $epsilon
+
+    @media (max-width: 768px)
+        width: 120px
+        height: 120px
+        margin-bottom: 1rem
+
+.sidebar-name
+    font-size: 1.8rem
+    margin: 0 0 0.75rem 0
+    color: $beta
+    font-weight: 600
+    line-height: 1.3
+
+    @media (max-width: 768px)
+        font-size: 1.6rem
+
+.sidebar-tagline
+    font-size: 1.1rem
+    color: $gama
+    margin: 0 0 1.5rem 0
+    line-height: 1.5
+
+    @media (max-width: 768px)
+        font-size: 1rem
+        margin-bottom: 1rem
+
+.homepage-sidebar .social-links
+    display: flex
+    justify-content: center
+    gap: 0.75rem
+    flex-wrap: nowrap
+    margin-top: 1rem
+
+    @media (max-width: 768px)
+        gap: 0.75rem
+        flex-wrap: wrap
+
+    .link
+        font-size: 1.3rem
+        color: $alpha
+        transition: color 0.2s ease
+        flex-shrink: 0
+
+        &:hover
+            color: $delta
+
+.homepage-content
+    flex: 1
+    min-width: 0
+    max-width: 900px
+
+    @media (max-width: 768px)
+        max-width: 100%
+
+// Navigation for homepage - use same style as other pages (absolute positioned)
+.home .nav-home
+    position: absolute
+    right: 0
+    top: 0
+    margin-top: 0
+
+    > .list
+        padding: 0 13px 0
+
+    > .list > .item > .link
+        font-size: 1.4rem
+        padding: 20px 10px
+        width: auto
+        border-radius: 0
+        transition: color 0.2s ease
+
+        &:hover
+            background: transparent
+            color: $alpha
+
