@@ -2,7 +2,7 @@
 Thank you for considering contributing to this project! We appreciate your interest and help in making this project better. Please take a moment to review the following guidelines to ensure a smooth contribution process.
 
 ## Getting Started
-Before you start contributing, please check the [README](https://github.com/sergiokopplin/indigo#setup) for instructions on setting up the project.
+Before you start contributing, please check the [Local development & preview](README.md#local-development--preview) section for up-to-date instructions on installing dependencies and running the site locally.
 
 ## Contribution Guidelines
 To contribute to this project, please follow these steps:

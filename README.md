@@ -36,18 +36,47 @@
 2. Edit `_config.yml` with your data
 3. Write some posts :bowtie:
 
-To run locally do the following:
+## Local development & preview
 
-1. Install [Jekyll](https://jekyllrb.com) and [Bundler](https://bundler.io/).
-2. Clone the forked repo on your machine
-3. Enter the cloned folder via terminal and run:
-```sh
-bundle install
-bundle exec jekyll serve
-```
-4. Open it in your browser: [http://localhost:4000](http://localhost:4000)
+### Prerequisites
 
-Or run with [docker](https://github.com/BretFisher/jekyll-serve).
+The site is a standard [Jekyll](https://jekyllrb.com/) project. To run it locally you will need:
+
+- [Ruby](https://www.ruby-lang.org/en/) 2.7 or newer with development headers.
+- [Bundler](https://bundler.io/) (`gem install bundler`).
+- [Jekyll](https://jekyllrb.com/) (`gem install jekyll`) – the `github-pages` gem supplied in the `Gemfile` includes the right version, so installing Bundler is usually enough.
+- A working C compiler and `make` (these ship with Xcode Command Line Tools on macOS and `build-essential` on Debian/Ubuntu).
+
+Optional but recommended:
+
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) if you prefer to run the site without installing Ruby locally.
+
+### Run with Ruby/Bundler
+
+1. Clone the repository and install dependencies:
+   ```sh
+   bundle install
+   ```
+   If you prefer to keep gems isolated, set a local path first: `bundle config set --local path vendor/bundle`.
+2. Start the local server with live reload and draft support:
+   ```sh
+   bundle exec jekyll serve --livereload --drafts
+   ```
+3. Open [http://localhost:4000](http://localhost:4000) in your browser to preview the site.
+4. When you are finished, press `Ctrl+C` in the terminal to stop the server.
+
+### Run with Docker
+
+1. Ensure Docker and Docker Compose are running.
+2. Start the development container (the first run will pull the images and install gems):
+   ```sh
+   docker-compose up
+   ```
+   Add `--build` if you change dependencies inside the image.
+3. Visit [http://localhost:4000](http://localhost:4000) to view the generated site.
+4. Stop the stack with `Ctrl+C`, then `docker-compose down` to free resources.
+
+Changes you make to the source files will trigger an automatic rebuild in both workflows, making it easy to test content or layout tweaks before deploying. For a production-style check you can also run `bundle exec jekyll build` to generate the static site into the `_site` directory.
 
 ## Settings
 
