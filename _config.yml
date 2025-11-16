@@ -105,6 +105,8 @@ collections:
   news:
     output: false
     sort_by: date
+  publications:
+    output: false
 
 plugins:
   - jekyll-seo-tag

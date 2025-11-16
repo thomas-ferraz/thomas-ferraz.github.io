@@ -11,7 +11,7 @@
         margin: 0 auto
         display: block
 
-.bio-section, .research-section, .publications-section, .news-section
+.bio-section, .research-section, .publications-section, .news-section, .publications-page-section
     margin: 3rem auto
     max-width: 900px
     padding: 0 1rem
@@ -204,3 +204,29 @@
 
         &:hover, &:focus
             text-decoration: underline
+
+// Publications page specific styles
+.publications-page-section
+    h1
+        margin-bottom: 3rem
+
+// Publications page year grouping styles
+.publication-year-group
+    margin-bottom: 4rem
+
+    &:last-child
+        margin-bottom: 0
+
+.publication-year-header
+    font-size: 2rem
+    font-weight: 600
+    color: $beta
+    margin: 0 0 2rem 0
+    padding-bottom: 1rem
+    border-bottom: 2px solid $epsilon
+    text-align: left
+
+    @media (max-width: 768px)
+        font-size: 1.8rem
+        margin-bottom: 1.5rem
+        padding-bottom: 0.75rem

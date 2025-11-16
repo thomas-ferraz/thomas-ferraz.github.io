@@ -35,6 +35,11 @@
                 <a class="link" href="{{ site.url }}/news">News</a>
             </li>
         {% endif %}
+        {% if page.title != "Publications" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/publications">Publications</a>
+            </li>
+        {% endif %}
 
         {% if site.resume == true %}
             <li class="item">

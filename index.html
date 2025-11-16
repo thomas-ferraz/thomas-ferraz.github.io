@@ -3,7 +3,25 @@ layout: page
 title: Home
 ---
 {% assign profile = site.data.profile %}
-{% assign publications = profile.selected_publications %}
+{% assign selected_pub_ids = profile.selected_publications %}
+{% assign selected_publications_array = '' | split: '' %}
+{% assign all_pubs = null %}
+{% if site.publications %}
+    {% assign all_pubs = site.publications %}
+{% elsif site.collections.publications and site.collections.publications.docs %}
+    {% assign all_pubs = site.collections.publications.docs %}
+{% endif %}
+{% if all_pubs and selected_pub_ids %}
+    {% for pub_id in selected_pub_ids %}
+        {% for pub in all_pubs %}
+            {% if pub.slug == pub_id or pub.id == pub_id %}
+                {% assign selected_publications_array = selected_publications_array | push: pub %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{% assign publications = selected_publications_array %}
 {% assign featured_news_array = '' | split: '' %}
 {% for item in site.news %}
     {% if item.featured == true %}
@@ -58,7 +76,7 @@ title: Home
         </section>
         {% endif %}
 
-        {% if publications %}
+        {% if publications and publications.size > 0 %}
         <section class="publications-section" aria-labelledby="selected-publications-heading">
             <h2 id="selected-publications-heading">📝 Selected Publications</h2>
             <p>{{ profile.selected_publications_intro }}</p>
