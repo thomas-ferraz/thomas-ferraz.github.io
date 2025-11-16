@@ -96,6 +96,17 @@ defaults:
       # setting all post to not hidden by default,
       # can be overridden in the front matter for a specific post
       hidden: false
+  - scope:
+      type: "news"
+    values:
+      layout: null
+
+collections:
+  news:
+    output: false
+    sort_by: date
+  publications:
+    output: false
 
 plugins:
   - jekyll-seo-tag

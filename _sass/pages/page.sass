@@ -10,3 +10,223 @@
         width: 50%
         margin: 0 auto
         display: block
+
+.bio-section, .research-section, .publications-section, .news-section, .publications-page-section
+    margin: 3rem auto
+    max-width: 900px
+    padding: 0 1rem
+
+.homepage-content .bio-section,
+.homepage-content .research-section,
+.homepage-content .publications-section,
+.homepage-content .news-section
+    margin: 3rem 0
+    max-width: 100%
+    padding: 0
+
+.bio-section p, .research-section li
+    line-height: 1.7
+
+.publications-list, .news-list
+    list-style: none
+    padding: 0
+    margin: 0
+    display: grid
+    gap: 1.5rem
+
+.publications-list
+    grid-template-columns: 1fr
+    gap: 2rem
+
+.publication-item
+    margin: 0
+    padding: 0
+
+.publication-row
+    display: flex
+    flex-direction: row
+    gap: 1.5rem
+    align-items: flex-start
+    margin-bottom: 2rem
+
+    @media (max-width: 768px)
+        flex-direction: column
+        gap: 1rem
+
+.publication-thumbnail
+    flex-shrink: 0
+    width: 180px
+    min-width: 180px
+
+    @media (max-width: 768px)
+        width: 100%
+        max-width: 200px
+        margin: 0 auto
+
+    img
+        width: 100%
+        height: auto
+        border-radius: 8px
+        object-fit: cover
+        display: block
+
+    a
+        display: block
+        text-decoration: none
+
+.publication-content
+    flex: 1
+    min-width: 0
+
+.publication-title
+    margin: 0 0 0.5rem 0
+    font-size: 1.8rem
+    line-height: 1.4
+
+    a
+        color: #4cb5ff
+        text-decoration: none
+        font-weight: 500
+
+        &:hover, &:focus
+            text-decoration: underline
+
+.publication-authors
+    margin: 0.5rem 0
+    color: #c9c9c9
+    font-size: 1.4rem
+    font-style: italic
+    line-height: 1.7
+
+.publication-venue
+    margin: 0.5rem 0 1rem 0
+    color: #9ad0ff
+    font-size: 1.4rem
+
+.publication-summary
+    margin: 0.75rem 0 1rem 0
+    color: #c9c9c9
+    font-size: 1.4rem
+    line-height: 1.7
+
+    strong
+        color: #9ad0ff
+
+.publication-buttons
+    display: flex
+    flex-wrap: wrap
+    gap: 0.5rem
+    margin-top: 0.75rem
+
+.pub-button
+    display: inline-block
+    padding: 0.25rem 0.75rem
+    border: 1px solid #4cb5ff
+    background: transparent
+    color: #4cb5ff
+    text-decoration: none
+    font-size: 0.85rem
+    font-weight: 500
+    border-radius: 4px
+    transition: all 0.2s ease
+
+    &:hover, &:focus
+        background: #4cb5ff
+        color: #000
+        text-decoration: none
+
+// Simple news list format (like Maxime's site)
+.news-simple-list
+    list-style: none
+    padding: 0
+    margin: 1.5rem 0 0 0
+
+.news-simple-item
+    display: flex
+    flex-direction: row
+    gap: 1rem
+    margin-bottom: 1.5rem
+    align-items: flex-start
+
+    @media (max-width: 768px)
+        flex-direction: column
+        gap: 0.5rem
+
+.news-simple-date
+    flex-shrink: 0
+    width: 140px
+    font-weight: 600
+    color: #9ad0ff
+    font-size: 1.4rem
+
+    @media (max-width: 768px)
+        width: 100%
+
+.news-simple-content
+    flex: 1
+    min-width: 0
+
+.news-simple-text
+    color: $alpha
+    font-size: 1.4rem
+    line-height: 1.7
+
+    strong
+        color: $beta
+        font-weight: 600
+
+    p
+        margin: 0
+        display: inline
+
+.news-section a
+    color: #9ad0ff
+    text-decoration: none
+
+.news-section a:hover, .news-section a:focus
+    text-decoration: underline
+
+// News page specific styles
+.news-page-section
+    margin: 3rem auto
+    max-width: 900px
+    padding: 0 1rem
+
+    h1
+        margin-bottom: 2rem
+
+    .news-simple-list
+        margin-top: 2rem
+
+    a
+        color: #9ad0ff
+        text-decoration: none
+
+        &:hover, &:focus
+            text-decoration: underline
+
+// Publications page specific styles
+.publications-page-section
+    h1
+        margin-bottom: 3rem
+
+// Publications page year grouping styles
+.publication-year-group
+    margin-bottom: 4rem
+
+    &:last-child
+        margin-bottom: 0
+
+.publication-year-header
+    font-size: 2rem
+    font-weight: 600
+    color: $beta
+    margin: 0 0 2rem 0
+    padding-bottom: 1rem
+    border-bottom: 2px solid $epsilon
+    text-align: left
+
+    @media (max-width: 768px)
+        font-size: 1.8rem
+        margin-bottom: 1.5rem
+        padding-bottom: 0.75rem

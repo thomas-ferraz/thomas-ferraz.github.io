@@ -2,3 +2,138 @@
 layout: page
 title: Home
 ---
+{% assign profile = site.data.profile %}
+{% assign selected_pub_ids = profile.selected_publications %}
+{% assign selected_publications_array = '' | split: '' %}
+{% assign all_pubs = null %}
+{% if site.publications %}
+    {% assign all_pubs = site.publications %}
+{% elsif site.collections.publications and site.collections.publications.docs %}
+    {% assign all_pubs = site.collections.publications.docs %}
+{% endif %}
+{% if all_pubs and selected_pub_ids %}
+    {% for pub_id in selected_pub_ids %}
+        {% for pub in all_pubs %}
+            {% if pub.slug == pub_id or pub.id == pub_id %}
+                {% assign selected_publications_array = selected_publications_array | push: pub %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{% assign publications = selected_publications_array %}
+{% assign featured_news_array = '' | split: '' %}
+{% for item in site.news %}
+    {% if item.featured == true %}
+        {% assign featured_news_array = featured_news_array | push: item %}
+    {% endif %}
+{% endfor %}
+{% if featured_news_array.size > 0 %}
+    {% assign featured_news = featured_news_array | sort: 'date' | reverse %}
+{% else %}
+    {% assign featured_news = null %}
+{% endif %}
+
+<div class="homepage-container">
+    <aside class="homepage-sidebar">
+        <img class="sidebar-profile-pic" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+        <h1 class="sidebar-name">{{ site.title }}</h1>
+        <p class="sidebar-tagline">{{ site.bio }}</p>
+        {% include social-links.html %}
+    </aside>
+    
+    <main class="homepage-content">
+        <section class="bio-section" aria-labelledby="short-bio-heading">
+            <h2 id="short-bio-heading">👨🏻‍💻 About Me</h2>
+            <p>
+                {{ profile.bio.short | markdownify }}
+            </p>
+        </section>
+
+        <section id="research-interests" class="research-section" aria-labelledby="research-heading">
+            <h2 id="research-heading">🔬 Research Interests</h2>
+            <ul>
+                <li><strong>LLM Agents:</strong> Memory-augmented planning and reasoning for autonomous, multi-step agentic tasks.</li>
+                <li><strong>Efficient LLMs:</strong> Sparse, modular, and adaptive architectures enabling scalable and continual learning.</li>
+                <li><strong>Efficient Reasoning:</strong> Latent-space reasoning and cognitive-inspired mechanisms for faster, cheaper and robust deliberation.</li>
+                <li><strong>Interpretability:</strong> Neuro-symbolic methods and mechanistic analysis to expose and steer internal model computations.</li>
+            </ul>
+        </section>
+
+        {% if featured_news and featured_news.size > 0 %}
+        <section class="news-section" aria-labelledby="news-heading">
+            <h2 id="news-heading">📰 News</h2>
+            <ul class="news-simple-list">
+                {% for item in featured_news %}
+                <li class="news-simple-item">
+                    <time class="news-simple-date" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%b %d, %Y" }}</time>
+                    <div class="news-simple-content">
+                        <span class="news-simple-text"><strong>{{ item.title }}:</strong> {{ item.content | markdownify }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if publications and publications.size > 0 %}
+        <section class="publications-section" aria-labelledby="selected-publications-heading">
+            <h2 id="selected-publications-heading">📝 Selected Publications</h2>
+            <p>{{ profile.selected_publications_intro }}</p>
+            <ul class="publications-list">
+                {% for pub in publications %}
+                <li class="publication-item">
+                    <article class="publication-row">
+                        {% if pub.image %}
+                        <div class="publication-thumbnail">
+                            <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener" aria-label="Read {{ pub.title }}">
+                                <img src="{{ pub.image | relative_url }}" alt="Illustration for {{ pub.title }}">
+                            </a>
+                        </div>
+                        {% endif %}
+                        <div class="publication-content">
+                            <h3 class="publication-title">
+                                <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener">
+                                    {{ pub.title }}
+                                </a>
+                            </h3>
+                            <p class="publication-authors">{{ pub.authors }}</p>
+                            <p class="publication-venue">{{ pub.venue }}</p>
+                            {% if pub.summary %}
+                            <p class="publication-summary"><strong>TL;DR:</strong> {{ pub.summary }}</p>
+                            {% endif %}
+                            <div class="publication-buttons">
+                                {% if pub.arxiv %}
+                                <a href="{{ pub.arxiv }}" target="_blank" rel="noopener" class="pub-button">ARXIV</a>
+                                {% endif %}
+                                {% if pub.bib %}
+                                <a href="{{ pub.bib }}" target="_blank" rel="noopener" class="pub-button">BIB</a>
+                                {% endif %}
+                                {% if pub.pdf %}
+                                <a href="{{ pub.pdf }}" target="_blank" rel="noopener" class="pub-button">PDF</a>
+                                {% endif %}
+                                {% if pub.code %}
+                                <a href="{{ pub.code }}" target="_blank" rel="noopener" class="pub-button">CODE</a>
+                                {% endif %}
+                                {% if pub.site %}
+                                <a href="{{ pub.site }}" target="_blank" rel="noopener" class="pub-button">SITE</a>
+                                {% endif %}
+                                {% if pub.video %}
+                                <a href="{{ pub.video }}" target="_blank" rel="noopener" class="pub-button">VIDEO</a>
+                                {% endif %}
+                                {% if pub.blog %}
+                                <a href="{{ pub.blog }}" target="_blank" rel="noopener" class="pub-button">BLOG</a>
+                                {% endif %}
+                                {% if pub.twitter %}
+                                <a href="{{ pub.twitter }}" target="_blank" rel="noopener" class="pub-button">TWITTER</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </article>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </main>
+</div>

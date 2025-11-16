@@ -38,6 +38,80 @@
 
 ## Local development & preview
 
+### Running on macOS
+
+#### Option 1: Using Ruby/Bundler (Recommended)
+
+1. **Install Xcode Command Line Tools** (includes C compiler and make):
+   ```sh
+   xcode-select --install
+   ```
+
+2. **Install Ruby** (macOS comes with Ruby, but you may want a newer version):
+   - Check your Ruby version: `ruby --version`
+   - If you need Ruby 2.7+, consider using [rbenv](https://github.com/rbenv/rbenv) or [Homebrew](https://brew.sh/):
+     ```sh
+     # Using Homebrew
+     brew install ruby
+     ```
+     # Add Homebrew Ruby to your PATH (add to ~/.zshrc)
+   ```sh
+    echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+3. **Install Bundler**:
+   ```sh
+   gem install bundler
+   ```
+
+4. **Navigate to the project directory**:
+   ```sh
+   cd /path/to/thomas-ferraz.github.io
+   ```
+
+5. **Install dependencies**:
+   ```sh
+   bundle install
+   ```
+   If you encounter permission issues, you may need to use `sudo` or install gems to a local path:
+   ```sh
+   bundle config set --local path vendor/bundle
+   bundle install
+   ```
+
+6. **Start the local Jekyll server**:
+   ```sh
+   bundle exec jekyll serve --livereload --drafts
+   ```
+
+7. **Open your browser** and visit [http://localhost:4000](http://localhost:4000)
+
+8. **Stop the server** by pressing `Ctrl+C` in the terminal
+
+#### Option 2: Using Docker (No Ruby installation needed)
+
+1. **Install Docker Desktop for Mac**:
+   - Download from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/)
+   - Install and start Docker Desktop
+
+2. **Navigate to the project directory**:
+   ```sh
+   cd /path/to/thomas-ferraz.github.io
+   ```
+
+3. **Start the Docker container**:
+   ```sh
+   docker-compose up
+   ```
+   The first run will download the Jekyll image and may take a few minutes.
+
+4. **Open your browser** and visit [http://localhost:4000](http://localhost:4000)
+
+5. **Stop the container**:
+   - Press `Ctrl+C` to stop
+   - Run `docker-compose down` to remove the container
+
 ### Prerequisites
 
 The site is a standard [Jekyll](https://jekyllrb.com/) project. To run it locally you will need:
