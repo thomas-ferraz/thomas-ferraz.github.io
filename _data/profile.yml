@@ -17,6 +17,8 @@ selected_publications:
     arxiv: https://arxiv.org/abs/2410.06458
     pdf: https://arxiv.org/pdf/2410.06458
     bib: https://arxiv.org/bibtex/2410.06458
+    video: https://www.youtube.com/watch?v=4w1tfV4dogs
+    twitter: https://x.com/_ThomasPF/status/1853908432203534679?s=20
     summary: >-
       Introducing RealInstruct to evaluate LLMs on real multi-constrained instructions, and DeCRIM self-correction that improves
       instruction following by decomposing requests and refining responses, enabling open LLMs to outperform GPT-4 with strong feedback.
@@ -27,6 +29,7 @@ selected_publications:
     arxiv: https://arxiv.org/abs/2311.01070
     pdf: https://arxiv.org/pdf/2311.01070
     bib: https://arxiv.org/bibtex/2311.01070
+    code: https://github.com/naver/multilingual-distilwhisper
     summary: >-
       Proposes a lightweight adaptation method bridging the gap between small and large speech models on under-represented languages
       by leveraging language-specific experts and knowledge distillation, outperforming fine-tuning and LoRA with minimal overhead.

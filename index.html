@@ -100,6 +100,12 @@ title: Home
                                 {% if pub.site %}
                                 <a href="{{ pub.site }}" target="_blank" rel="noopener" class="pub-button">SITE</a>
                                 {% endif %}
+                                {% if pub.video %}
+                                <a href="{{ pub.video }}" target="_blank" rel="noopener" class="pub-button">VIDEO</a>
+                                {% endif %}
+                                {% if pub.blog %}
+                                <a href="{{ pub.blog }}" target="_blank" rel="noopener" class="pub-button">BLOG</a>
+                                {% endif %}
                                 {% if pub.twitter %}
                                 <a href="{{ pub.twitter }}" target="_blank" rel="noopener" class="pub-button">TWITTER</a>
                                 {% endif %}
