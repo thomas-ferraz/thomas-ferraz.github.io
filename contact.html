@@ -10,10 +10,10 @@ layout: page
     <form 
         id="contact-form"
         class="contact-form"
-        action="https://docs.google.com/forms/d/e/1FAIpQLSdhOhx3msYjtGKJVBRay9001ZEsXpfCReQ5BhiNsKum49c3xw/formResponse"
+        action="https://script.google.com/macros/s/AKfycbzd7OFt1flGLwLYyDRMepSANmGzpDXDXIqdCagM7aCKOp4SMfrJzWHAA5D0_bCVB7e2/exec"
         method="POST"
         target="hidden_iframe"
-        onsubmit="handleFormSubmit(event)"
+        onsubmit="return handleFormSubmit(event)"
     >
         <div class="form-group">
             <label for="name">
@@ -22,7 +22,7 @@ layout: page
             </label>
             <input 
                 id="name" 
-                name="entry.444727733" 
+                name="name" 
                 type="text" 
                 placeholder="Enter your name"
                 required 
@@ -38,7 +38,7 @@ layout: page
             </label>
             <input 
                 id="email" 
-                name="entry.528749808" 
+                name="email" 
                 type="email" 
                 placeholder="your.email@example.com"
                 required 
@@ -48,23 +48,31 @@ layout: page
         </div>
 
         <div class="form-group">
+            <label for="subject">
+                Subject
+            </label>
+            <input 
+                id="subject" 
+                name="subject" 
+                type="text" 
+                placeholder="What is this about?"
+                autocomplete="off"
+            />
+            <span class="form-error" id="subject-error"></span>
+        </div>
+
+        <div class="form-group">
             <label for="message">
                 Your message
             </label>
             <textarea 
                 id="message" 
-                name="entry.1564646587" 
+                name="message" 
                 rows="6" 
                 placeholder="Type your message here..."
             ></textarea>
             <span class="form-error" id="message-error"></span>
         </div>
-
-        <!-- Hidden fields required by Google Forms -->
-        <input type="hidden" name="fvv" value="1" />
-        <input type="hidden" name="fbzx" value="-8817466103629282417" />
-        <input type="hidden" name="draftResponse" value='[null,null,"-8817466103629282417"]' />
-        <input type="hidden" name="pageHistory" value="0" />
 
         <button type="submit" class="form-submit-button" id="submit-button">
             Send Message
@@ -75,7 +83,13 @@ layout: page
         <p><strong>Thank you!</strong> Your message has been sent successfully. I'll get back to you soon.</p>
     </div>
 
-    <iframe name="hidden_iframe" class="hidden-iframe" id="hidden_iframe"></iframe>
+    <div id="form-error" class="form-error-message" style="display: none;">
+        <p><strong>Error:</strong> <span id="error-text">Failed to send your message. Please try again or contact me directly.</span></p>
+    </div>
+
+    <!-- Hidden iframe for form submission (avoids CORS issues) -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
+
 </section>
 
 <script>
@@ -83,26 +97,76 @@ function handleFormSubmit(e) {
     const form = document.getElementById('contact-form');
     const submitButton = document.getElementById('submit-button');
     const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+    const errorText = document.getElementById('error-text');
+    const hiddenIframe = document.getElementById('hidden_iframe');
     
-    // Disable submit button to prevent double submission
+    // Validate form
+    if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+        return false;
+    }
+    
+    // Hide previous messages
+    successMessage.classList.remove('show');
+    errorMessage.style.display = 'none';
+    
+    // Disable submit button
     submitButton.disabled = true;
     submitButton.textContent = 'Sending...';
     
-    // Clear any previous errors
+    // Clear previous errors
     const errorElements = form.querySelectorAll('.form-error');
     errorElements.forEach(el => el.classList.remove('show'));
     
-    // Let the form submit to Google Forms via the hidden iframe
-    // After a short delay, show success message
-    setTimeout(function() {
-        form.style.display = 'none';
-        successMessage.classList.add('show');
+    // Listen for success message from iframe (via postMessage)
+    let submissionHandled = false;
+    
+    const messageHandler = function(event) {
+        // Accept messages from Google Apps Script domain
+        if (event.origin !== 'https://script.google.com' && event.origin !== 'https://script.googleusercontent.com') {
+            return;
+        }
         
-        // Reset form after showing success (for potential future use)
-        form.reset();
+        if (submissionHandled) return;
+        submissionHandled = true;
+        
         submitButton.disabled = false;
         submitButton.textContent = 'Send Message';
-    }, 1000);
+        
+        if (event.data && event.data.result === 'success') {
+            form.style.display = 'none';
+            successMessage.classList.add('show');
+            form.reset();
+        } else if (event.data && event.data.result === 'error') {
+            errorText.textContent = event.data.message || 'Failed to send your message. Please try again.';
+            errorMessage.style.display = 'block';
+        }
+        
+        window.removeEventListener('message', messageHandler);
+    };
+    
+    window.addEventListener('message', messageHandler);
+    
+    // Fallback: if iframe loads but no message received, assume success after delay
+    hiddenIframe.onload = function() {
+        setTimeout(function() {
+            if (!submissionHandled) {
+                submissionHandled = true;
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+                form.style.display = 'none';
+                successMessage.classList.add('show');
+                form.reset();
+                window.removeEventListener('message', messageHandler);
+            }
+        }, 1000);
+    };
+    
+    // Allow form to submit normally to the iframe
+    // This avoids CORS issues completely
+    return true;
 }
 
 // Optional: Add real-time validation feedback
