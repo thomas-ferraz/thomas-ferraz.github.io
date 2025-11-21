@@ -1,0 +1,135 @@
+// Contact Form Styles
+.contact-form-section
+    margin: 3rem auto
+    max-width: 600px
+    padding: 0 1rem
+
+    h1
+        margin-bottom: 2rem
+
+.contact-form
+    display: flex
+    flex-direction: column
+    gap: 1.5rem
+
+.form-group
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+
+    label
+        font-size: 1.4rem
+        font-weight: 500
+        color: $beta
+        margin-bottom: 0.25rem
+
+        .required
+            color: #ff6b6b
+            margin-left: 0.25rem
+
+    input[type="text"],
+    input[type="email"],
+    textarea
+        padding: 0.75rem 1rem
+        font-size: 1.4rem
+        font-family: $fontSans
+        color: $beta
+        background: transparent
+        border: 1px solid #4cb5ff
+        border-radius: 4px
+        transition: all 0.2s ease
+        width: 100%
+        box-sizing: border-box
+
+        &:focus
+            outline: none
+            border-color: #9ad0ff
+            background: rgba(76, 181, 255, 0.05)
+
+        &::placeholder
+            color: $gama
+
+        &:invalid:not(:placeholder-shown)
+            border-color: #ff6b6b
+
+    textarea
+        min-height: 120px
+        resize: vertical
+        line-height: 1.6
+
+    @media #{$mobile}
+        input[type="text"],
+        input[type="email"],
+        textarea
+            font-size: 1.6rem
+
+.form-submit-button
+    display: inline-block
+    padding: 0.75rem 2rem
+    border: 1px solid #4cb5ff
+    background: transparent
+    color: #4cb5ff
+    text-decoration: none
+    font-size: 1.4rem
+    font-weight: 500
+    border-radius: 4px
+    transition: all 0.2s ease
+    cursor: pointer
+    align-self: flex-start
+    font-family: $fontSans
+
+    &:hover, &:focus
+        background: #4cb5ff
+        color: #000
+        text-decoration: none
+
+    &:disabled
+        opacity: 0.5
+        cursor: not-allowed
+
+        &:hover
+            background: transparent
+            color: #4cb5ff
+
+.form-success
+    display: none
+    padding: 2rem
+    background: rgba(76, 181, 255, 0.1)
+    border: 1px solid #4cb5ff
+    border-radius: 4px
+    text-align: center
+    margin-top: 2rem
+
+    &.show
+        display: block
+        animation: fadeIn 0.3s ease
+
+    p
+        margin: 0
+        font-size: 1.6rem
+        color: $beta
+        font-weight: 400
+
+        strong
+            color: #9ad0ff
+
+@keyframes fadeIn
+    from
+        opacity: 0
+        transform: translateY(-10px)
+    to
+        opacity: 1
+        transform: translateY(0)
+
+.hidden-iframe
+    display: none
+
+.form-error
+    color: #ff6b6b
+    font-size: 1.3rem
+    margin-top: 0.25rem
+    display: none
+
+    &.show
+        display: block
+

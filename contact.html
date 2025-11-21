@@ -1,0 +1,148 @@
+---
+title: Contact
+layout: page
+---
+
+<section class="contact-form-section">
+    <h1>Contact</h1>
+    <p>Feel free to reach out! I'll get back to you as soon as possible.</p>
+    
+    <form 
+        id="contact-form"
+        class="contact-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdhOhx3msYjtGKJVBRay9001ZEsXpfCReQ5BhiNsKum49c3xw/formResponse"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="handleFormSubmit(event)"
+    >
+        <div class="form-group">
+            <label for="name">
+                Your name
+                <span class="required">*</span>
+            </label>
+            <input 
+                id="name" 
+                name="entry.444727733" 
+                type="text" 
+                placeholder="Enter your name"
+                required 
+                autocomplete="name"
+            />
+            <span class="form-error" id="name-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">
+                Your email
+                <span class="required">*</span>
+            </label>
+            <input 
+                id="email" 
+                name="entry.528749808" 
+                type="email" 
+                placeholder="your.email@example.com"
+                required 
+                autocomplete="email"
+            />
+            <span class="form-error" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="message">
+                Your message
+            </label>
+            <textarea 
+                id="message" 
+                name="entry.1564646587" 
+                rows="6" 
+                placeholder="Type your message here..."
+            ></textarea>
+            <span class="form-error" id="message-error"></span>
+        </div>
+
+        <!-- Hidden fields required by Google Forms -->
+        <input type="hidden" name="fvv" value="1" />
+        <input type="hidden" name="fbzx" value="-8817466103629282417" />
+        <input type="hidden" name="draftResponse" value='[null,null,"-8817466103629282417"]' />
+        <input type="hidden" name="pageHistory" value="0" />
+
+        <button type="submit" class="form-submit-button" id="submit-button">
+            Send Message
+        </button>
+    </form>
+
+    <div id="form-success" class="form-success">
+        <p><strong>Thank you!</strong> Your message has been sent successfully. I'll get back to you soon.</p>
+    </div>
+
+    <iframe name="hidden_iframe" class="hidden-iframe" id="hidden_iframe"></iframe>
+</section>
+
+<script>
+function handleFormSubmit(e) {
+    const form = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('form-success');
+    
+    // Disable submit button to prevent double submission
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    
+    // Clear any previous errors
+    const errorElements = form.querySelectorAll('.form-error');
+    errorElements.forEach(el => el.classList.remove('show'));
+    
+    // Let the form submit to Google Forms via the hidden iframe
+    // After a short delay, show success message
+    setTimeout(function() {
+        form.style.display = 'none';
+        successMessage.classList.add('show');
+        
+        // Reset form after showing success (for potential future use)
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+    }, 1000);
+}
+
+// Optional: Add real-time validation feedback
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (!this.validity.valid) {
+                const errorId = this.id + '-error';
+                const errorEl = document.getElementById(errorId);
+                if (errorEl) {
+                    if (this.validity.valueMissing) {
+                        errorEl.textContent = 'This field is required.';
+                    } else if (this.validity.typeMismatch && this.type === 'email') {
+                        errorEl.textContent = 'Please enter a valid email address.';
+                    }
+                    errorEl.classList.add('show');
+                }
+            } else {
+                const errorId = this.id + '-error';
+                const errorEl = document.getElementById(errorId);
+                if (errorEl) {
+                    errorEl.classList.remove('show');
+                }
+            }
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.validity.valid) {
+                const errorId = this.id + '-error';
+                const errorEl = document.getElementById(errorId);
+                if (errorEl) {
+                    errorEl.classList.remove('show');
+                }
+            }
+        });
+    });
+});
+</script>
+
+
