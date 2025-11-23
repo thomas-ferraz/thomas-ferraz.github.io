@@ -11,5 +11,6 @@ bib: https://arxiv.org/bibtex/2201.01337
 summary: >-
   ZeroBERTo combines topic modeling with language models for zero-shot text classification, overcoming input size limitations and reducing runtime,
   achieving a 12% better F1 score and 13x faster inference compared to XLM-R on a Portuguese benchmark.
+tags: ["Text Classification", "Topic Modeling"]
 ---
 

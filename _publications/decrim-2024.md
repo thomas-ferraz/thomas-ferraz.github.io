@@ -13,5 +13,6 @@ twitter: https://x.com/_ThomasPF/status/1853908432203534679?s=20
 summary: >-
   Introducing RealInstruct to evaluate LLMs on real multi-constrained instructions, and DeCRIM self-correction that improves
   instruction following by decomposing requests and refining responses, enabling open LLMs to outperform GPT-4 with strong feedback.
+tags: ["LLM Agents", "Instruction Following", "Generation"]
 ---
 
