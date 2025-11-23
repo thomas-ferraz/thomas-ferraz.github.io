@@ -4,3 +4,6 @@ _site
 Gemfile.lock
 .bundle
 vendor/
+# Generated tag pages will be committed by GitHub Actions
+# publications/*.html  <- Removed: pages are now auto-generated and committed
+!publications/tag_template.html

@@ -83,6 +83,14 @@ layout: page
                                             <a href="{{ pub.twitter }}" target="_blank" rel="noopener" class="pub-button">TWITTER</a>
                                             {% endif %}
                                         </div>
+                                        {% if pub.tags %}
+                                        <div class="publication-tags">
+                                            {% for tag in pub.tags %}
+                                                {% assign tag_slug = tag | downcase | replace: ' ', '-' %}
+                                                <a href="{{ '/publications/' | append: tag_slug | append: '/' | relative_url }}" class="tag-button">{{ tag }}</a>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </article>
                             </li>

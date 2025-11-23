@@ -11,6 +11,7 @@ bib: https://arxiv.org/bibtex/2410.19193
 twitter: https://bsky.app/profile/thomaspalmeira.bsky.social/post/3lbz7dqqy5227
 code: https://github.com/BrunoCroso/ContextualGNNs-FakeNews
 summary: >-
-  Investigate the impact of incorporating user’s text into GNNs to enhance fake news detection. Found some content features are more important than network features, and that contextual text representations brings big improvement to the task in two benchmarks. 
+  Investigate the impact of incorporating user's text into GNNs to enhance fake news detection. Found some content features are more important than network features, and that contextual text representations brings big improvement to the task in two benchmarks. 
+tags: ["Graph Neural Networks", "Fake News Detection"]
 ---
 

@@ -12,5 +12,6 @@ code: https://github.com/naver/multilingual-distilwhisper
 summary: >-
   Proposes a lightweight adaptation method bridging the gap between small and large speech models on under-represented languages
   by leveraging language-specific experts and knowledge distillation, outperforming fine-tuning and LoRA with minimal overhead.
+tags: ["Speech Processing", "Multilingual"]
 ---
 
