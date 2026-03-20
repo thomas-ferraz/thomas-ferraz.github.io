@@ -8,6 +8,7 @@ bio:
 selected_publications_intro: >-
   A selection of papers that reflect my main research focus and contributions.
 selected_publications:
+  - 2026-expRAG
   - decrim-2024
   - distilwhisper-2024
   - zeroberto-2022
