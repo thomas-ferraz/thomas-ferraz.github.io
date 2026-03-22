@@ -1,0 +1,125 @@
+---
+layout: page
+title: "Publications on \"Thesis\""
+tag: "Thesis"
+tag_slug: thesis
+permalink: "/publications/thesis/"
+---
+{% comment %} Get tag from page data {% endcomment %}
+{% assign tag = page.tag %}
+{% assign tag_slug = page.tag_slug %}
+
+{% comment %} Get all publications {% endcomment %}
+{% assign all_publications = null %}
+{% if site.publications %}
+    {% assign all_publications = site.publications | sort: 'date' | reverse %}
+{% elsif site.collections.publications and site.collections.publications.docs %}
+    {% assign all_publications = site.collections.publications.docs | sort: 'date' | reverse %}
+{% endif %}
+
+{% comment %} Filter publications by tag {% endcomment %}
+{% assign filtered_publications = '' | split: '' %}
+
+{% if all_publications %}
+    {% for pub in all_publications %}
+        {% if pub.tags %}
+            {% for pub_tag in pub.tags %}
+                {% if pub_tag == tag %}
+                    {% assign filtered_publications = filtered_publications | push: pub %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% comment %} Group filtered publications by year {% endcomment %}
+{% if filtered_publications.size > 0 %}
+    {% assign years = '' | split: '' %}
+    {% for pub in filtered_publications %}
+        {% assign pub_year = pub.date | date: "%Y" %}
+        {% unless years contains pub_year %}
+            {% assign years = years | push: pub_year %}
+        {% endunless %}
+    {% endfor %}
+    {% assign sorted_years = years | sort | reverse %}
+{% else %}
+    {% assign sorted_years = '' | split: '' %}
+{% endif %}
+
+<section class="publications-page-section">
+    <h1>Publications on "{{ tag }}"</h1>
+    {% if filtered_publications.size > 0 %}
+        {% for year in sorted_years %}
+            <div class="publication-year-group">
+                <h2 class="publication-year-header">{{ year }}</h2>
+                <ul class="publications-list">
+                    {% for pub in filtered_publications %}
+                        {% assign pub_year = pub.date | date: "%Y" %}
+                        {% if pub_year == year %}
+                            <li class="publication-item">
+                                <article class="publication-row">
+                                    {% if pub.image %}
+                                    <div class="publication-thumbnail">
+                                        <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener" aria-label="Read {{ pub.title }}">
+                                            <img src="{{ pub.image | relative_url }}" alt="Illustration for {{ pub.title }}">
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                    <div class="publication-content">
+                                        <h3 class="publication-title">
+                                            <a href="{% if pub.pdf %}{{ pub.pdf }}{% elsif pub.arxiv %}{{ pub.arxiv }}{% else %}#{% endif %}" target="_blank" rel="noopener">
+                                                {{ pub.title }}
+                                            </a>
+                                        </h3>
+                                        <p class="publication-authors">{{ pub.authors }}</p>
+                                        <p class="publication-venue">{{ pub.venue }}</p>
+                                        {% if pub.summary %}
+                                        <p class="publication-summary"><strong>TL;DR:</strong> {{ pub.summary }}</p>
+                                        {% endif %}
+                                        <div class="publication-buttons">
+                                            {% if pub.arxiv %}
+                                            <a href="{{ pub.arxiv }}" target="_blank" rel="noopener" class="pub-button">ARXIV</a>
+                                            {% endif %}
+                                            {% if pub.bib %}
+                                            <a href="{{ pub.bib }}" target="_blank" rel="noopener" class="pub-button">BIB</a>
+                                            {% endif %}
+                                            {% if pub.pdf %}
+                                            <a href="{{ pub.pdf }}" target="_blank" rel="noopener" class="pub-button">PDF</a>
+                                            {% endif %}
+                                            {% if pub.code %}
+                                            <a href="{{ pub.code }}" target="_blank" rel="noopener" class="pub-button">CODE</a>
+                                            {% endif %}
+                                            {% if pub.site %}
+                                            <a href="{{ pub.site }}" target="_blank" rel="noopener" class="pub-button">SITE</a>
+                                            {% endif %}
+                                            {% if pub.video %}
+                                            <a href="{{ pub.video }}" target="_blank" rel="noopener" class="pub-button">VIDEO</a>
+                                            {% endif %}
+                                            {% if pub.blog %}
+                                            <a href="{{ pub.blog }}" target="_blank" rel="noopener" class="pub-button">BLOG</a>
+                                            {% endif %}
+                                            {% if pub.twitter %}
+                                            <a href="{{ pub.twitter }}" target="_blank" rel="noopener" class="pub-button">TWITTER</a>
+                                            {% endif %}
+                                        </div>
+                                        {% if pub.tags %}
+                                        <div class="publication-tags">
+                                            {% for pub_tag in pub.tags %}
+                                                {% assign pub_tag_slug = pub_tag | downcase | replace: ' ', '-' %}
+                                                <a href="{{ '/publications/' | append: pub_tag_slug | append: '/' | relative_url }}" class="tag-button">{{ pub_tag }}</a>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </article>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No publications found for this tag.</p>
+    {% endif %}
+</section>
