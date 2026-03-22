@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - master
-      - research_filter
+      - gh-pages
     paths:
       - '_publications/**'
       - 'publications/tag_template.html'

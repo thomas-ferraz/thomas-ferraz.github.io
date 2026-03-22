@@ -13,7 +13,8 @@ publications = []
 
 Dir.glob(File.join(publications_dir, '*.md')).each do |file|
   content = File.read(file, encoding: 'utf-8')
-  if content =~ /\A---\s*\n(.*?)\n---\s*\n(.*)/m
+  # Allow EOF immediately after closing --- (missing trailing newline breaks the old pattern)
+  if content =~ /\A---\s*\n(.*?)\n---\s*\n?(.*)\z/m
     front_matter = YAML.safe_load($1)
     if front_matter && front_matter['tags'] && front_matter['tags'].is_a?(Array)
       publications << front_matter
@@ -38,7 +39,7 @@ unless File.exist?(template_path)
 end
 
 template_content = File.read(template_path, encoding: 'utf-8')
-if template_content =~ /\A---\s*\n(.*?)\n---\s*\n(.*)/m
+if template_content =~ /\A---\s*\n(.*?)\n---\s*\n?(.*)\z/m
   template_body = $2
 else
   template_body = template_content
