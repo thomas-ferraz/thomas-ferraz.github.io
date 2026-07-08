@@ -1,6 +1,6 @@
 bio:
   short: >-
-    Hi, I'm **Thomas Ferraz**, I'm Research Scientist at **NAVER LABS Europe**, on the **LLM Agents Team**, and also **PhD Candidate at Université Grenoble-Alpes**, advised by [Vassilina Nikoulina](https://scholar.google.com/citations?user=IVJ4wN4AAAAJ&hl=fr), [Maxime Peyrard](https://peyrardm.github.io/), and [Eric Gaussier](https://ama.liglab.fr/~gaussier/), exploring how large language models can reason and plan more effectively by combining efficient neural computation with interpretable latent structures.
+    Hi, I'm **Thomas Ferraz**, I'm Research Scientist at [**NAVER LABS Europe**](https://europe.naverlabs.com/), on the **LLM Agents Team**, and also **PhD Candidate at Université Grenoble-Alpes**, advised by [Vassilina Nikoulina](https://scholar.google.com/citations?user=IVJ4wN4AAAAJ&hl=fr), [Maxime Peyrard](https://peyrardm.github.io/), and [Eric Gaussier](https://ama.liglab.fr/~gaussier/), exploring how large language models can reason and plan more effectively by combining efficient neural computation with interpretable latent structures.
     <br>
     My main research contributions rely on **Efficient Learning for Language Models**. Before working on LLM agents and reasoning, I contributed to **Multilingual NLP** and **Low-Resource NLP**, including works on multilingual speech recognition, distillation, and cross-lingual modeling.  
     <br>
@@ -9,6 +9,7 @@ selected_publications_intro: >-
   A selection of papers that reflect my main research focus and contributions.
 selected_publications:
   - 2026-expRAG
+  - 2026-causalgeoLRM
   - decrim-2024
   - distilwhisper-2024
   - zeroberto-2022
