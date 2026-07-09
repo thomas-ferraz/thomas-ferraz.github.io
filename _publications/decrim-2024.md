@@ -10,6 +10,7 @@ pdf: https://arxiv.org/pdf/2410.06458
 bib: https://arxiv.org/bibtex/2410.06458
 video: https://www.youtube.com/watch?v=4w1tfV4dogs
 twitter: https://x.com/_ThomasPF/status/1853908432203534679?s=20
+poster: https://thomas-ferraz.github.io/assets/posters/2024_11_EMNLP_2024.pdf
 summary: >-
   Introducing RealInstruct to evaluate LLMs on real multi-constrained instructions, and DeCRIM self-correction that improves
   instruction following by decomposing requests and refining responses, enabling open LLMs to outperform GPT-4 with strong feedback.
