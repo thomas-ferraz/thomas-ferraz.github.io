@@ -8,6 +8,7 @@ venue: Preprint - Under Review
 arxiv: https://arxiv.org/abs/2603.18272
 pdf: https://arxiv.org/pdf/2603.18272
 bib: https://arxiv.org/bibtex/2603.18272
+poster: https://thomas-ferraz.github.io/assets/posters/2026_04_19_ICLR_MemAgents_2026.pdf
 summary: >-
   We investigate a strong baseline for LLM Agents Memory: retrieving experience from similar tasks. We show that LLM agents generalize better to never-before-seen tasks when they are trained not only to act, but also to use retrieved experience during training. We analyses key choices behind effective experience retrieval fine-tuning.
 tags: ["LLM Agents", "Retrieval", "Continual Learning"]
