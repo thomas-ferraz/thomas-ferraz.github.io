@@ -4,7 +4,7 @@ date: "2026-06-18"
 title: "Observable Patterns Are Not Explanations: A Causal-Geometric Analysis of Latent Reasoning Models"
 image: assets/images/selected_publications/2026-causalgeoLRM.png
 authors: Darpan Aswal, Thomas Palmeira Ferraz, Yongxin Zhou, Maxime Peyrard
-venue: Preprint - Under Review
+venue: "EMNLP, 2026"
 arxiv: https://arxiv.org/abs/2606.12689
 pdf: https://arxiv.org/pdf/2606.12689
 bib: https://arxiv.org/bibtex/2606.12689

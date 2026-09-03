@@ -4,7 +4,7 @@ date: "2026-03-18"
 title: "Retrieval-Augmented LLM Agents: Learning to Learn from Experience"
 image: assets/images/selected_publications/ExpRAG.png
 authors: Thomas Palmeira Ferraz, Romain Deffayet, Vassilina Nikoulina, Hervé Déjean, Stéphane Clinchant
-venue: Preprint - Under Review
+venue: "EMNLP, 2026 & MemAgents @ ICLR, 2026"
 arxiv: https://arxiv.org/abs/2603.18272
 pdf: https://arxiv.org/pdf/2603.18272
 bib: https://arxiv.org/bibtex/2603.18272
